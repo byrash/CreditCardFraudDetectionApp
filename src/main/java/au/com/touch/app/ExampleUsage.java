@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,15 @@ class ExampleUsage extends MockData {
     AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
     initAppContext(appContext);
     // Trigger sample usage
-    appContext.getBean(ExampleUsage.class).runCreditCardFraudDetectionSample();
+    ExampleUsage exampleUsage = appContext.getBean(ExampleUsage.class);
+    exampleUsage.runCreditCardFraudDetectionSample();
+    long start = System.nanoTime();
+    Double priceThreshold = 10.0;
+    LocalDate dateFromCsvSample = LocalDate.parse("2014-04-29");
+    exampleUsage.detectFraudsFromInputTransactionsCsvFile(exampleUsage.creditCardFraud,priceThreshold,dateFromCsvSample);
+    long end = System.nanoTime();
+    long ms = TimeUnit.MILLISECONDS.convert(end - start, TimeUnit.NANOSECONDS);
+    log.debug("Took [{}] ms",ms);
   }
 
   private static void initAppContext(AnnotationConfigApplicationContext appContext) {
@@ -45,7 +54,7 @@ class ExampleUsage extends MockData {
     // Params for detecting frauds
     Double priceThreshold = 10.0;
     LocalDate dateFromCsvSample = LocalDate.parse("2014-04-29");
-
+    long start = System.nanoTime();
     // Parsing from csv file
     detectFraudsFromInputTransactionsCsvFile(creditCardFraud, priceThreshold, dateFromCsvSample);
     // Parsing from input string list
