@@ -1,4 +1,4 @@
-package au.com.touch.app.vo;
+package au.com.shivaji.app.approach3.vo;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

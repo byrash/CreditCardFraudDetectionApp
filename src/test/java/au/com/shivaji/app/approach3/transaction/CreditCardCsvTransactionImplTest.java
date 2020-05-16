@@ -1,4 +1,4 @@
-package au.com.touch.app.transaction;
+package au.com.shivaji.app.approach3.transaction;
 
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.junit.Assert.assertFalse;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Arrays;

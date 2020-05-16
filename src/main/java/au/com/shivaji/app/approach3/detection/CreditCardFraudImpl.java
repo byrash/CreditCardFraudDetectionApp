@@ -1,12 +1,12 @@
-package au.com.touch.app.fraud.detection;
+package au.com.shivaji.app.approach3.detection;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingDouble;
 
 
-import au.com.touch.app.exception.CreditCardFraudDetectionException;
-import au.com.touch.app.transaction.TransactionSource;
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.exception.CreditCardFraudDetectionException;
+import au.com.shivaji.app.approach3.transaction.TransactionSource;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -47,10 +47,9 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
    * @return
    */
   @Override
-  public Collection<String> detect(
-      Collection<String> inputTransactions, LocalDate transactionDate, Double priceThreshold) {
-    log.debug("Detecting frauds from input transactions.");
-    log.debug("Total transaction received [{}]", inputTransactions.size());
+  public Collection<String> detect(Collection<String> inputTransactions, LocalDate transactionDate, Double priceThreshold) {
+    log.trace("Detecting frauds from input transactions.");
+    log.trace("Total transaction received [{}]", inputTransactions.size());
     Collection<CreditCardTransactionVo> creditCardTransactionVos =
         this.transactionSource.parse(inputTransactions);
     return this.detectInternal(creditCardTransactionVos, transactionDate, priceThreshold);
@@ -69,8 +68,8 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
   @Override
   public Collection<String> detect(Path filePath, LocalDate transactionDate, Double priceThreshold) {
     try {
-      log.debug("Detecting frauds from input transactions file");
-      log.debug("File Path [{}]", filePath.toAbsolutePath());
+      log.trace("Detecting frauds from input transactions file");
+      log.trace("File Path [{}]", filePath.toAbsolutePath());
       Collection<CreditCardTransactionVo> creditCardTransactionVos = this.transactionSource.parse(filePath);
       return this.detectInternal(creditCardTransactionVos, transactionDate, priceThreshold);
     } catch (IOException e) {
@@ -92,8 +91,8 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
       LocalDate transactionDate,
       Double priceThreshold) {
 
-    log.debug("Find frauds from total transactions [{}]", transactions.size());
-    log.debug("Find frauds on Date [{}] and price threshold [{}]", transactionDate, priceThreshold);
+    log.trace("Find frauds from total transactions [{}]", transactions.size());
+    log.trace("Find frauds on Date [{}] and price threshold [{}]", transactionDate, priceThreshold);
 
     final Predicate<CreditCardTransactionVo> transactionDateFilterPredicate =
         creditCardTransactionVo -> 0 == transactionDateTimeFallingUnderSuppliedDateFunc.apply(

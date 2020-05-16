@@ -1,6 +1,6 @@
-package au.com.touch.app.transaction;
+package au.com.shivaji.app.approach3.transaction;
 
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
@@ -32,7 +32,7 @@ public class CreditCardCsvTransactionImpl implements Transaction<String, CreditC
   @SuppressWarnings("SpellCheckingInspection")
   @Override
   public Optional<CreditCardTransactionVo> parse(final String transaction) {
-    log.debug("Trying to Parsing transaction String [{}]", transaction);
+    log.trace("Trying to Parsing transaction String [{}]", transaction);
     String[] transactionData = transaction.split(ELEMENT_SEPARATOR);
     if (transactionData.length != 3) {
       log.error("Arid transaction record [{}] supplied", transaction);
@@ -44,7 +44,7 @@ public class CreditCardCsvTransactionImpl implements Transaction<String, CreditC
       double transactionAmount = Double.parseDouble(transactionData[2].trim());
       CreditCardTransactionVo creditCardTransactionVo =
           new CreditCardTransactionVo(creditCardNumberHash, transactionDateTime, transactionAmount);
-      log.debug("Parsing transaction is successful");
+      log.trace("Parsing transaction is successful");
       return Optional.of(creditCardTransactionVo);
     } catch (DateTimeParseException | NumberFormatException | NullPointerException e) {
       log.error(

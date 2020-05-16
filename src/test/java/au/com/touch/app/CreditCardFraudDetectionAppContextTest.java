@@ -3,6 +3,7 @@ package au.com.touch.app;
 import static org.junit.Assert.assertTrue;
 
 
+import au.com.shivaji.app.approach3.CreditCardFraudDetectionAppContext;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

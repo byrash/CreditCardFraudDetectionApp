@@ -1,10 +1,10 @@
-package au.com.touch.app.transaction;
+package au.com.shivaji.app.approach3.transaction;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.toList;
 
 
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * {@link au.com.touch.app.transaction.TransactionSource} implementation for credit card csv
+ * {@link au.com.shivaji.app.approach3.transaction.TransactionSource} implementation for credit card csv
  * transaction source.
  *
  * <p><b>NOTE::: Invalid Transaction records are being ignored;</b>
@@ -60,7 +60,7 @@ public class CreditCardCsvTransactionSourceImpl
    */
   @Override
   public Collection<CreditCardTransactionVo> parse(Collection<String> inputs) {
-    log.debug("Credit card transaction source collection based parsing");
+    log.trace("Credit card transaction source collection based parsing");
     return inputs
         .stream() // Use Parallel Stream based on input load
         .map(stringToTransactionVoFunc)

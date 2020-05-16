@@ -1,14 +1,14 @@
-package au.com.touch.app.fraud.detection;
+package au.com.shivaji.app.approach3.detection;
 
 import static java.util.stream.Collectors.joining;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import au.com.touch.app.transaction.CreditCardCsvTransactionImpl;
-import au.com.touch.app.transaction.CreditCardCsvTransactionSourceImpl;
-import au.com.touch.app.transaction.Transaction;
-import au.com.touch.app.transaction.TransactionSource;
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.transaction.CreditCardCsvTransactionImpl;
+import au.com.shivaji.app.approach3.transaction.CreditCardCsvTransactionSourceImpl;
+import au.com.shivaji.app.approach3.transaction.Transaction;
+import au.com.shivaji.app.approach3.transaction.TransactionSource;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;

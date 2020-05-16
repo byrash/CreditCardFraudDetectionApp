@@ -1,4 +1,4 @@
-package au.com.touch.app.fraud.detection;
+package au.com.shivaji.app.approach3.detection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,8 +6,8 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyCollectionOf;
 
 
-import au.com.touch.app.transaction.TransactionSource;
-import au.com.touch.app.vo.CreditCardTransactionVo;
+import au.com.shivaji.app.approach3.transaction.TransactionSource;
+import au.com.shivaji.app.approach3.vo.CreditCardTransactionVo;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
