@@ -11,9 +11,13 @@ import java.util.Collection;
  */
 public interface Fraud<I, O> {
 
-  /** Detects frauds based on collection of inputs */
+  /**
+   * Detects frauds based on collection of inputs
+   */
   Collection<O> detect(Collection<I> inputs, LocalDate transactionDate, Double priceThreshold);
 
-  /** Detects frauds based on file path */
+  /**
+   * Detects frauds based on file path
+   */
   Collection<O> detect(Path filePath, LocalDate transactionDate, Double priceThreshold);
 }

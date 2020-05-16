@@ -3,6 +3,7 @@ package au.com.touch.app.fraud.detection;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingDouble;
 
+
 import au.com.touch.app.exception.CreditCardFraudDetectionException;
 import au.com.touch.app.transaction.TransactionSource;
 import au.com.touch.app.vo.CreditCardTransactionVo;
@@ -19,14 +20,16 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 
-/** @author Shivaji Byrapaneni */
+/**
+ * @author Shivaji Byrapaneni
+ */
 @Slf4j
 public class CreditCardFraudImpl implements Fraud<String, String> {
 
   private final BiFunction<LocalDateTime, LocalDate, Integer>
       transactionDateTimeFallingUnderSuppliedDateFunc =
-          (transactionDateTime, fraudTransactionDetectionDate) ->
-              transactionDateTime.toLocalDate().compareTo(fraudTransactionDetectionDate);
+      (transactionDateTime, fraudTransactionDetectionDate) ->
+          transactionDateTime.toLocalDate().compareTo(fraudTransactionDetectionDate);
 
   private final TransactionSource<CreditCardTransactionVo> transactionSource;
 
@@ -59,9 +62,9 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
    *
    * <p>parses a CSV file of credit card csv transactions
    *
-   * @param filePath csv content file path which need to be processed to load transactions
+   * @param filePath        csv content file path which need to be processed to load transactions
    * @param transactionDate transaction date we need to detect frauds
-   * @param priceThreshold price threshold above which is to be considered as fraud
+   * @param priceThreshold  price threshold above which is to be considered as fraud
    * @return
    */
   @Override
@@ -82,9 +85,9 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
    * A credit card will be identified as fraudulent if the sum of prices for a unique hashed credit
    * * card number, for a given day, exceeds the price threshold T
    *
-   * @param transactions transaction strings to process
+   * @param transactions    transaction strings to process
    * @param transactionDate transaction date we need to detect frauds
-   * @param priceThreshold price threshold above which is to be considered as fraud
+   * @param priceThreshold  price threshold above which is to be considered as fraud
    * @return a collection of credit card number hash that are marked as fraud
    */
   private Collection<String> detectInternal(
@@ -99,13 +102,13 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
         creditCardTransactionVo ->
             0
                 == transactionDateTimeFallingUnderSuppliedDateFunc.apply(
-                    creditCardTransactionVo.getTransactionDateTime(), transactionDate);
+                creditCardTransactionVo.getTransactionDateTime(), transactionDate);
 
     final Collector<CreditCardTransactionVo, ?, Map<String, Double>>
         totalTransactionAmountGroupedByCreditCardNumHashCollector =
-            groupingBy(
-                CreditCardTransactionVo::getCreditCardNumberHash,
-                summingDouble(CreditCardTransactionVo::getTransactionAmount));
+        groupingBy(
+            CreditCardTransactionVo::getCreditCardNumberHash,
+            summingDouble(CreditCardTransactionVo::getTransactionAmount));
 
     final Predicate<Entry<String, Double>> totalAbovePriceThresholdPredicate =
         creditCardHashToTotalTransactionAmountEntry ->

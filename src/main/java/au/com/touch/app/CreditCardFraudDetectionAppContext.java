@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-/** @author Shivaji Byrapaneni */
+/**
+ * @author Shivaji Byrapaneni
+ */
 @ComponentScan(basePackages = "au.com.touch.app")
 @Configuration
 public class CreditCardFraudDetectionAppContext {

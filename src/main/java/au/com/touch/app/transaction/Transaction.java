@@ -1,6 +1,7 @@
 package au.com.touch.app.transaction;
 
 import java.util.Optional;
+
 /**
  * Service to process an individual transaction.
  *

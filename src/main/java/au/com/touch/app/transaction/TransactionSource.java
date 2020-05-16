@@ -13,9 +13,13 @@ import java.util.Collection;
  */
 public interface TransactionSource<O> {
 
-  /** Parse the given file and return a collection of parsed results */
+  /**
+   * Parse the given file and return a collection of parsed results
+   */
   Collection<O> parse(Path filePath) throws IOException;
 
-  /** Parse the given collection and return a collection of parsed results */
+  /**
+   * Parse the given collection and return a collection of parsed results
+   */
   Collection<O> parse(Collection<String> inputs);
 }

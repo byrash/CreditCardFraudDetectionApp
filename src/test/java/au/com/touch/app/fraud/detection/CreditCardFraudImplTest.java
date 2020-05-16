@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyCollectionOf;
 
+
 import au.com.touch.app.transaction.TransactionSource;
 import au.com.touch.app.vo.CreditCardTransactionVo;
 import java.io.IOException;
@@ -22,11 +23,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-/** @author Shivaji Byrapaneni */
-class CreditCardFraudImplTest {
-  @Mock private TransactionSource transactionSource;
 
-  @InjectMocks private CreditCardFraudImpl objectUnderTest;
+/**
+ * @author Shivaji Byrapaneni
+ */
+class CreditCardFraudImplTest {
+  @Mock
+  private TransactionSource transactionSource;
+
+  @InjectMocks
+  private CreditCardFraudImpl objectUnderTest;
 
   @BeforeEach
   void mockCalls() throws IOException {

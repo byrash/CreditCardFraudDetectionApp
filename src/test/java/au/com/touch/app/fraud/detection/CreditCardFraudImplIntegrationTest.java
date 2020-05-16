@@ -3,6 +3,7 @@ package au.com.touch.app.fraud.detection;
 import static java.util.stream.Collectors.joining;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 import au.com.touch.app.transaction.CreditCardCsvTransactionImpl;
 import au.com.touch.app.transaction.CreditCardCsvTransactionSourceImpl;
 import au.com.touch.app.transaction.Transaction;
@@ -16,7 +17,10 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.jupiter.api.Test;
-/** @author Shivaji Byrapaneni */
+
+/**
+ * @author Shivaji Byrapaneni
+ */
 class CreditCardFraudImplIntegrationTest {
 
   private final Transaction<String, CreditCardTransactionVo> transaction =

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.when;
 
+
 import au.com.touch.app.vo.CreditCardTransactionVo;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -17,12 +18,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-/** @author Shivaji Byrapaneni */
+/**
+ * @author Shivaji Byrapaneni
+ */
 class CreditCardCsvTransactionSourceImplTest {
 
-  @Mock private CreditCardCsvTransactionImpl transaction;
+  @Mock
+  private CreditCardCsvTransactionImpl transaction;
 
-  @InjectMocks private CreditCardCsvTransactionSourceImpl objectUnderTest;
+  @InjectMocks
+  private CreditCardCsvTransactionSourceImpl objectUnderTest;
 
   /**
    * Given a file with transactions, transaction date, price threshold expect

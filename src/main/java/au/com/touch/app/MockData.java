@@ -8,7 +8,9 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 
-/** @author Shivaji Byrapaneni */
+/**
+ * @author Shivaji Byrapaneni
+ */
 class MockData {
 
   Collection<String> mockTransactionsCollection() {

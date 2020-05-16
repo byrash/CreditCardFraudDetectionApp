@@ -2,6 +2,7 @@ package au.com.touch.app;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -14,7 +15,6 @@ import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
@@ -23,7 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * This approach is memory efficient and process intensive
  *
- * @author Shivaji Byrapaneni */
+ * @author Shivaji Byrapaneni
+ */
 @Slf4j
 public class FraudDetectionAnotherApproach {
 

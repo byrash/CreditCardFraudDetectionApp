@@ -39,10 +39,10 @@ class ExampleUsage extends MockData {
     long start = System.nanoTime();
     Double priceThreshold = 10.0;
     LocalDate dateFromCsvSample = LocalDate.parse("2014-04-29");
-    exampleUsage.detectFraudsFromInputTransactionsCsvFile(exampleUsage.creditCardFraud,priceThreshold,dateFromCsvSample);
+    exampleUsage.detectFraudsFromInputTransactionsCsvFile(exampleUsage.creditCardFraud, priceThreshold, dateFromCsvSample);
     long end = System.nanoTime();
     long ms = TimeUnit.MILLISECONDS.convert(end - start, TimeUnit.NANOSECONDS);
-    log.debug("Took [{}] ms",ms);
+    log.debug("Took [{}] ms", ms);
   }
 
   private static void initAppContext(AnnotationConfigApplicationContext appContext) {
