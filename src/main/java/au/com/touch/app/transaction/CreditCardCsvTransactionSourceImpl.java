@@ -28,8 +28,7 @@ public class CreditCardCsvTransactionSourceImpl
 
   private final Function<String, Optional<CreditCardTransactionVo>> stringToTransactionVoFunc;
 
-  public CreditCardCsvTransactionSourceImpl(
-      Transaction<String, CreditCardTransactionVo> transaction) {
+  public CreditCardCsvTransactionSourceImpl(Transaction<String, CreditCardTransactionVo> transaction) {
     this.stringToTransactionVoFunc = transaction::parse;
   }
 

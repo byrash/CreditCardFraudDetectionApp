@@ -27,9 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CreditCardFraudImpl implements Fraud<String, String> {
 
   private final BiFunction<LocalDateTime, LocalDate, Integer>
-      transactionDateTimeFallingUnderSuppliedDateFunc =
-      (transactionDateTime, fraudTransactionDetectionDate) ->
-          transactionDateTime.toLocalDate().compareTo(fraudTransactionDetectionDate);
+      transactionDateTimeFallingUnderSuppliedDateFunc = (transactionDateTime, fraudTransactionDetectionDate) ->
+      transactionDateTime.toLocalDate().compareTo(fraudTransactionDetectionDate);
 
   private final TransactionSource<CreditCardTransactionVo> transactionSource;
 
@@ -68,13 +67,11 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
    * @return
    */
   @Override
-  public Collection<String> detect(
-      Path filePath, LocalDate transactionDate, Double priceThreshold) {
+  public Collection<String> detect(Path filePath, LocalDate transactionDate, Double priceThreshold) {
     try {
       log.debug("Detecting frauds from input transactions file");
       log.debug("File Path [{}]", filePath.toAbsolutePath());
-      Collection<CreditCardTransactionVo> creditCardTransactionVos =
-          this.transactionSource.parse(filePath);
+      Collection<CreditCardTransactionVo> creditCardTransactionVos = this.transactionSource.parse(filePath);
       return this.detectInternal(creditCardTransactionVos, transactionDate, priceThreshold);
     } catch (IOException e) {
       throw new CreditCardFraudDetectionException(e.getMessage(), e);
@@ -99,10 +96,8 @@ public class CreditCardFraudImpl implements Fraud<String, String> {
     log.debug("Find frauds on Date [{}] and price threshold [{}]", transactionDate, priceThreshold);
 
     final Predicate<CreditCardTransactionVo> transactionDateFilterPredicate =
-        creditCardTransactionVo ->
-            0
-                == transactionDateTimeFallingUnderSuppliedDateFunc.apply(
-                creditCardTransactionVo.getTransactionDateTime(), transactionDate);
+        creditCardTransactionVo -> 0 == transactionDateTimeFallingUnderSuppliedDateFunc.apply(
+            creditCardTransactionVo.getTransactionDateTime(), transactionDate);
 
     final Collector<CreditCardTransactionVo, ?, Map<String, Double>>
         totalTransactionAmountGroupedByCreditCardNumHashCollector =

@@ -81,8 +81,7 @@ class ExampleUsage extends MockData {
     Path filePath = mockTransactionsCsvFile();
 
     // ************************ Fraud detection *****************
-    Collection<String> fraudsDetectedFromFileParsing =
-        creditCardFraud.detect(filePath, dateFromCsvSample, priceThreshold);
+    Collection<String> fraudsDetectedFromFileParsing = creditCardFraud.detect(filePath, dateFromCsvSample, priceThreshold);
 
     log.debug("Frauds -- {}", fraudsDetectedFromFileParsing);
   }
