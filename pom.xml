@@ -23,7 +23,7 @@
         <logback-classic.version>1.2.3</logback-classic.version>
         <lombok.version>1.18.0</lombok.version>
         <mockito-all.version>1.10.19</mockito-all.version>
-        <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.version>5.2.8.RELEASE</spring.version>
     </properties>
 
     <dependencies>
